@@ -220,52 +220,6 @@
 			.special{
 				color: darkcyan;
 			}
-			.triangle{
-				height: 1.4rem;
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 29.3%;
-				border-right: none;
-				display: none;
-			}
-			.tri1:after{
-				color: darkcyan;
-				content: "";
-				width: 0;
-				height: 0;
-				border: 0.14rem solid transparent;
-				border-bottom-color: darkcyan;
-				position: absolute;
-				left: 48%;
-				bottom: 0;
-				
-			}
-			.tri2:after{
-				color: darkcyan;
-				content: "";
-				width: 0;
-				height: 0;
-				border: 0.14rem solid transparent;
-				border-bottom-color: darkcyan;
-				position: absolute;
-				left: 161%;
-				bottom: 0;
-			}
-			.tri3:after{
-				color: darkcyan;
-				content: "";
-				width: 0;
-				height: 0;
-				border: 0.14rem solid transparent;
-				border-bottom-color: darkcyan;
-				position: absolute;
-				left: 278%;
-				bottom: 0;
-			}
-			.show{
-				display: block;
-			}
 		</style>
 	</head>
 	<body>
@@ -276,9 +230,6 @@
 					<li>医生团队</li>
 					<li>常见问题</li>
 				</ul>
-				<span class="triangle show tri1"></span>
-				<span class="triangle tri2"></span>
-				<span class="triangle tri3"></span>
 			</div>
 			<div class="swiper-container">
 			    <div class="swiper-wrapper">
@@ -451,11 +402,9 @@
 			var top_nav = document.getElementById("top_nav");
 			var nav_list = document.getElementById("nav_list");
 			var lis = nav_list.getElementsByTagName("li");
-			var spans = top_nav.getElementsByTagName("span");
 			function clear(){
 				for(var i=0;i<lis.length;i++){
 					lis[i].className  = "";
-					spans[i].className = "";
 				}
 			}
 			for(var i=0;i<lis.length;i++){
@@ -464,11 +413,15 @@
 					this.className = "special";
 				}
 			}
-			for(var i=0;i<spans.length;i++){
-				spans[i].onclick = function(){
-					clear();
-					this.className = "triangle";
-				}
+			lis[0].onclick = function(){
+					
+				document.body.scrollTop = 243;
+			}
+			lis[1].onclick = function(){
+				document.body.scrollTop = 993;
+			}
+			lis[2].onclick = function(){
+				document.body.scrollTop = 1553;	
 			}
 			
 			
