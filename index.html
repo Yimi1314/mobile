@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/swiper-3.4.2.min.css"/>
+		<script type="text/javascript" src="js/swiper-3.4.2.min.js"></script>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding: 0;
+			}
+			.swiper-container{
+				width: 7.5rem;
+			}
+			.swiper-wrapper{
+				width: 100%;
+				height: 5.5rem;
+			}
+			.swiper-slide img{
+				width: 100%;
+				height: 100%;
+			}
+			.bigbox{
+				position: relative;
+				overflow: hidden;
+			}
+			.VIPserve{
+				width: 7.2rem;
+				font-size: 0.40rem;
+				font-family: "微软雅黑";
+				margin-top: 0.3rem;
+				margin-bottom: 0.3rem;
+				margin-left: 0.3rem;
+				font-weight: bold;
+			}
+			.jieshao{
+				border-top: 1px solid #ccc;
+				border-bottom:8px solid #ccc;
+			}
+			.skyblue{
+				width: 1.55rem;
+				height: 0.62rem;
+				background: #00b1bb;
+				margin-top: 0.2rem;
+				margin-left: 0.3rem;
+				margin-bottom: 0.2rem;
+				font-size: 0.36rem;
+				color: #fff;
+				text-align: center;
+				line-height: 0.62rem;
+			}
+			.jieshao p{
+				color: #505050;
+				font-size: 0.28rem;
+				padding-left: 0.27rem;
+				line-height: 2;
+				margin-bottom: 0.45rem;
+			}
+			.menzhen{
+				color: #00b1bb;
+			}
+			.guangzhou{
+				font-size: 0.28rem;
+				color:#000000;
+				font-weight: bold;
+				padding-left: 0.27rem;
+			}
+			.jieshao img{
+				width: 100%;
+				height: 4.3rem;
+				margin-top: 0.2rem;
+			}
+			.jieshao>#time{
+				color: #505050;
+				font-size: 0.28rem;
+				padding-left: 0.27rem;
+				line-height: 2;
+				margin-bottom: 0.1rem;
+			}
+			.doctors{
+				overflow: hidden;
+				border-bottom: 8px solid #ccc;
+				margin-bottom: ;
+			}
+			.doctors-div{
+				height: 2rem;
+				border-bottom: 1px solid #ccc;
+				position: relative;
+			}
+			.doctor1{
+				float: left;
+				width: 1.41rem;
+				height: 1.4rem;
+				padding-left: 0.41rem;
+				padding-bottom: 0.42rem;
+				padding-top: 0.22rem;
+			}
+			.doctor1 img{
+				width: 100%;
+				height: 100%;
+			}
+			.inform{
+				float: left;
+				list-style: none;
+				width: 4.5rem;
+				height: 1.4rem;
+				padding-left: 0.41rem;
+				padding-bottom: 0.42rem;
+				padding-top: 0.22rem;
+			}
+			.inform li{
+				float: left;
+			}
+			.active{
+				font-size: 0.36rem;
+				color: #00b1bb;
+			}
+			.active1{
+				color: #999999;
+				padding-top: 0.02rem;
+				font-size: 0.28rem;
+				margin-left: 0.25rem;
+				margin-bottom: 0.2rem;
+			}
+			.active2{
+				width: 1.2rem;
+				height: 0.3rem;
+				background: #f0f0f0;
+				color: #b5b7b7;
+				font-size: 0.24rem;
+				text-align: center;
+				line-height: 0.3rem;
+				margin-right: 0.1rem;
+				margin-bottom: 0.2rem;
+			}
+			.next{
+				width: 0.25rem;
+				height: 0.42rem;
+				position: absolute;
+				right: 0.25rem;
+				top: 0.18rem;
+			}
+			.Membership-package{
+				border-bottom: 8px solid #ccc;
+			}
+			.three{
+				margin-bottom: 0.7rem;
+			}
+			.huiyuan{
+				width: 7.5rem;
+				height: 0.55rem;
+				position: relative;
+				margin-bottom: 0.3rem;
+			}
+			.huiyuan img{
+				position: absolute;
+				left: 0.3rem;
+				top: 0;
+				width: 4.25rem;
+				height: 0.55rem;
+			}
+			.Membership-package p,.qusetions p{
+				font-size: 0.28rem;
+				line-height: 2;
+				padding-left: 0.27rem;
+				padding-right: 0.27rem;
+				color: #505050;
+			}
+			.jiuzhen{
+				color: #00b1bb;
+				font-weight: bold;
+			}
+			.problem{
+				margin-bottom: 0.8rem;
+			}
+			.booter{
+				width: 100%;
+				height: 0.9rem;
+				background: #00b1bb;
+				position: fixed;
+				left: 0;
+				top:12.5rem;
+				z-index: 100;
+			}
+			.booter a{
+				display: block;
+				width: 100%;
+				height: 100%;
+				text-decoration: none;
+				text-align: center;
+				line-height: 0.9rem;
+				font-size: 0.48rem;
+				color: #fff;
+				font-weight: bold;
+			}
+			#top_nav{
+				width: 7.5rem;
+				position: fixed;
+				left: 0;
+				top: 0;
+				z-index: 100;
+				display: none;
+			}
+			#nav_list{
+				list-style: none;
+			}
+			#nav_list li{
+				float: left;
+				font-size: 0.36rem;
+				width: 2.5rem;
+				text-align: center;
+				line-height: 1.4rem;
+				background: #fff;
+				border-bottom: 1px solid  darkcyan;
+				border-right: 1px solid #ccc;
+				box-sizing: border-box;
+			}
+			.special{
+				color: darkcyan;
+			}
+			.triangle{
+				height: 1.4rem;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 29.3%;
+				border-right: none;
+				display: none;
+			}
+			.tri1:after{
+				color: darkcyan;
+				content: "";
+				width: 0;
+				height: 0;
+				border: 0.14rem solid transparent;
+				border-bottom-color: darkcyan;
+				position: absolute;
+				left: 48%;
+				bottom: 0;
+				
+			}
+			.tri2:after{
+				color: darkcyan;
+				content: "";
+				width: 0;
+				height: 0;
+				border: 0.14rem solid transparent;
+				border-bottom-color: darkcyan;
+				position: absolute;
+				left: 161%;
+				bottom: 0;
+			}
+			.tri3:after{
+				color: darkcyan;
+				content: "";
+				width: 0;
+				height: 0;
+				border: 0.14rem solid transparent;
+				border-bottom-color: darkcyan;
+				position: absolute;
+				left: 278%;
+				bottom: 0;
+			}
+			.show{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bigbox">
+			<div id="top_nav">
+				<ul id="nav_list">
+					<li class="special">诊所介绍</li>
+					<li>医生团队</li>
+					<li>常见问题</li>
+				</ul>
+				<span class="triangle show tri1"></span>
+				<span class="triangle tri2"></span>
+				<span class="triangle tri3"></span>
+			</div>
+			<div class="swiper-container">
+			    <div class="swiper-wrapper">
+			        <div class="swiper-slide"><img src="img/topimg.png"/></div>
+			        <div class="swiper-slide"><img src="img/topimg.png"/></div>
+			        <div class="swiper-slide"><img src="img/topimg.png"/></div>
+			    </div>
+			</div>
+			<div class="VIPserve">知贝儿科VIP挂号服务</div>
+			<div class="jieshao">
+				<div class="skyblue">诊所介绍</div>
+				<p>知贝儿科诊所是一家专注于儿童健康领域，为儿童提供现代循证医学（EBM）服务的专业医疗机构，拥有多位经验丰富、医术精湛的全职医生坐诊，服务范围涵盖了保健科、
+内科、皮肤科、耳鼻喉科等高需求科室。我们致力于把可靠的医疗服务，最佳的就医体验提供给家长和儿童，让就医成为一件温暖的小事。</p>
+				<p>知贝的服务</p>
+				<p><span class="menzhen">门诊服务：</span>儿童保健、新生儿专科、儿童呼吸专科、儿童
+心血管专科、儿童内分泌专科、儿童免疫专科、儿童肾脏
+专科、儿童神经专科、儿童耳鼻喉科、皮肤科
+				</p>
+				<div class="guangzhou">广州市番禺区奥园城市天地9区15-20号</div>
+				<div class="guangzhou">（近维也纳公寓）</div>
+				<img src="img/map.png" alt="" />
+				<div id="time">门诊营业时间：<span class="menzhen">9:00-18:00</span></div>
+				<div id="time">知贝儿科诊所目前只接受<span class="menzhen">电话预约</span></div>
+			</div>
+			<div class="team">
+				<div class="skyblue">医生团队</div>
+				<div class="doctors">
+					<div class="doctors-div">
+						<div class="doctor1"><img src="img/doctor1.png" alt="" /></div>
+						<ul class="inform">
+							<li class="active">欧茜</li>
+							<li class="active1">儿内科医生</li>
+							<li class="active1">从医12年</li>
+							<li class="active2">咳嗽</li>
+							<li class="active2">发烧</li>
+							<li class="active2">腹泻</li>
+							<li class="active2">养育</li>
+							<li class="active2">黄疸</li>
+						</ul>
+						<div class="next"><img src="img/next.png"/></div>
+					</div>
+					<div class="doctors-div">
+						<div class="doctor1"><img src="img/doctor1.png" alt="" /></div>
+						<ul class="inform">
+							<li class="active">欧茜</li>
+							<li class="active1">儿内科医生</li>
+							<li class="active1">从医12年</li>
+							<li class="active2">咳嗽</li>
+							<li class="active2">发烧</li>
+							<li class="active2">腹泻</li>
+							<li class="active2">养育</li>
+							<li class="active2">黄疸</li>
+						</ul>
+						<div class="next"><img src="img/next.png"/></div>
+					</div>
+					<div class="doctors-div">
+						<div class="doctor1"><img src="img/doctor1.png" alt="" /></div>
+						<ul class="inform">
+							<li class="active">欧茜</li>
+							<li class="active1">儿内科医生</li>
+							<li class="active1">从医12年</li>
+							<li class="active2">咳嗽</li>
+							<li class="active2">发烧</li>
+							<li class="active2">腹泻</li>
+							<li class="active2">养育</li>
+							<li class="active2">黄疸</li>
+						</ul>
+						<div class="next"><img src="img/next.png"/></div>
+					</div>
+					<div class="doctors-div">
+						<div class="doctor1"><img src="img/doctor1.png" alt="" /></div>
+						<ul class="inform">
+							<li class="active">欧茜</li>
+							<li class="active1">儿内科医生</li>
+							<li class="active1">从医12年</li>
+							<li class="active2">咳嗽</li>
+							<li class="active2">发烧</li>
+							<li class="active2">腹泻</li>
+							<li class="active2">养育</li>
+							<li class="active2">黄疸</li>
+						</ul>
+						<div class="next"><img src="img/next.png"/></div>
+					</div>
+					<div style="border-bottom: none;" class="doctors-div">
+						<div class="doctor1"><img src="img/doctor1.png" alt="" /></div>
+						<ul class="inform">
+							<li class="active">欧茜</li>
+							<li class="active1">儿内科医生</li>
+							<li class="active1">从医12年</li>
+							<li class="active2">咳嗽</li>
+							<li class="active2">发烧</li>
+							<li class="active2">腹泻</li>
+							<li class="active2">养育</li>
+							<li class="active2">黄疸</li>
+						</ul>
+						<div class="next"><img src="img/next.png"/></div>
+					</div>
+				</div>
+			</div>
+			<div class="Membership-package">
+				<div class="skyblue">会员套餐</div>
+				<div class="three">
+					<div class="huiyuan"><img src="img/huiyan1.png"/></div>
+					<p><span class="jiuzhen">就诊优惠：</span>门诊挂号7折，治疗费7折，检验费7折，线上服务7折</p>
+					<p><span class="jiuzhen">家庭医生服务：</span>专属宝宝管家服务pearl care，建立宝宝健康档案，建立宝宝病例方案终身保存和查询，医生小助手微信群管理服务</p>
+					<p><span class="jiuzhen">会员尊享：</span>知名三甲医疗机构绿色转诊服务1次，会员健康讲座，会员俱乐部定期活动，专家名家微课堂</p>
+				</div>
+				<div class="three">
+					<div class="huiyuan"><img src="img/huiyuan2.png"/></div>
+					<p><span class="jiuzhen">就诊优惠：</span>门诊挂号8折，治疗费8折，检验费8折，线上服务8折</p>
+					<p><span class="jiuzhen">家庭医生服务：</span>专属宝宝管家服务，建立宝宝健康档案，建立宝宝病例方案终身保存和查询，医生小助手微信群管理服务</p>
+					<p><span class="jiuzhen">会员尊享：</span>知名三甲医疗机构绿色转诊服务1次，会员健康讲座，会员俱乐部定期活动，专家名家微课堂</p>
+				</div>
+				<div class="three">
+					<div class="huiyuan"><img src="img/huiyuan3.png"/></div>
+					<p><span class="jiuzhen">就诊优惠：</span>门诊挂号9折，治疗费9折，检验费9折，线上服务9折</p>
+					<p><span class="jiuzhen">家庭医生服务：</span>专属宝宝管家服务，建立宝宝健康档案，建立宝宝病例方案终身保存和查询，医生小助手微信群管理服务</p>
+				</div>	
+			</div>
+			<div class="qusetions">
+				<div class="skyblue">常见问题</div>
+				<div class="problem">
+					<p><span class="menzhen">Q：怎么预约？</span></p>
+					<p>A：拨打知贝儿科客服电话，提供您需要预约的时间以及家长姓名和宝宝姓名即可。</p>
+				</div>
+				<div class="problem">
+					<p><span class="menzhen">Q：临时有事来不了怎么办？</span></p>
+					<p>A：拨打知贝儿科客服电话，告知客服取消预约/另约时间即可。</p>
+				</div>
+				<div class="problem">
+					<p><span class="menzhen">Q：附近有停车场吗？ </span></p>
+					<p>A：有的，奥园城市天地的停车位很充足，家长们不用担心找不到停车位。</p>
+				</div>
+			</div>
+			<div class="booter">
+				<a href="javascript:;">电话预约</a>
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript">      
+			//alert(window.devicePixelRatio);//dpr像素比
+		    (function (doc, win) {
+				
+		        var docEle = doc.documentElement,
+		        resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize';
+		        var recalCulate = function () {
+		            var width = docEle.clientWidth;
+		            docEle.style.fontSize = 100 * (width / 750) + 'px';
+		        };
+		
+		        recalCulate();
+		
+		        if (!doc.addEventListener) return;
+		        win.addEventListener(resizeEvent, recalCulate, false);
+		    })(document, window);
+			
+			var top_nav = document.getElementById("top_nav");
+			var gotop = 0;
+//	当浏览器窗口发生滚动的时候触发事件
+			window.onscroll = function(){
+//	当浏览器窗口发生变话的时候不断获取滚动条距离顶部的位置
+				gotop = document.documentElement.scrollTop||document.body.scrollTop;
+				if(gotop>=200){
+					top_nav.style.display = "block";
+				}else{
+					top_nav.style.display = "none";
+				}
+			}
+			var top_nav = document.getElementById("top_nav");
+			var nav_list = document.getElementById("nav_list");
+			var lis = nav_list.getElementsByTagName("li");
+			var spans = top_nav.getElementsByTagName("span");
+			function clear(){
+				for(var i=0;i<lis.length;i++){
+					lis[i].className  = "";
+					spans[i].className = "";
+				}
+			}
+			for(var i=0;i<lis.length;i++){
+				lis[i].onclick = function(){
+					clear();
+					this.className = "special";
+				}
+			}
+			for(var i=0;i<spans.length;i++){
+				spans[i].onclick = function(){
+					clear();
+					this.className = "triangle";
+				}
+			}
+			
+			
+			
+			var mySwiper = new Swiper ('.swiper-container', {
+			    loop: true,
+				autoplay : 3000,
+			})
+		</script>
+	</body>
+</html>
