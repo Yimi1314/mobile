@@ -209,7 +209,7 @@
 			#nav_list li{
 				float: left;
 				font-size: 0.36rem;
-				width: 33.3333%;
+				width: 2.5rem;
 				text-align: center;
 				line-height: 1.4rem;
 				background: #fff;
@@ -220,6 +220,15 @@
 			.special{
 				color: darkcyan;
 			}
+			#nav_list #triangle{
+				width: 0;
+				height: 0;
+				border: 0.14rem solid transparent;
+				border-bottom-color:darkcyan;
+				position: absolute;
+				left: 1.1rem;
+				bottom: 0;
+			}
 		</style>
 	</head>
 	<body>
@@ -228,7 +237,8 @@
 				<ul id="nav_list">
 					<li class="special">诊所介绍</li>
 					<li>医生团队</li>
-					<li>常见问题</li>
+					<li>会员套餐</li>
+					<li id="triangle"></li>
 				</ul>
 			</div>
 			<div class="swiper-container">
@@ -239,7 +249,7 @@
 			    </div>
 			</div>
 			<div class="VIPserve">知贝儿科VIP挂号服务</div>
-			<div class="jieshao">
+			<div class="jieshao" id="jie">
 				<div class="skyblue">诊所介绍</div>
 				<p>知贝儿科诊所是一家专注于儿童健康领域，为儿童提供现代循证医学（EBM）服务的专业医疗机构，拥有多位经验丰富、医术精湛的全职医生坐诊，服务范围涵盖了保健科、
 内科、皮肤科、耳鼻喉科等高需求科室。我们致力于把可靠的医疗服务，最佳的就医体验提供给家长和儿童，让就医成为一件温暖的小事。</p>
@@ -254,7 +264,7 @@
 				<div id="time">门诊营业时间：<span class="menzhen">9:00-18:00</span></div>
 				<div id="time">知贝儿科诊所目前只接受<span class="menzhen">电话预约</span></div>
 			</div>
-			<div class="team">
+			<div class="team" id="tm">
 				<div class="skyblue">医生团队</div>
 				<div class="doctors">
 					<div class="doctors-div">
@@ -329,7 +339,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="Membership-package">
+			<div class="Membership-package" id="member">
 				<div class="skyblue">会员套餐</div>
 				<div class="three">
 					<div class="huiyuan"><img src="img/huiyan1.png"/></div>
@@ -369,7 +379,7 @@
 			</div>
 		</div>
 		
-		
+		<script type="text/javascript" src="js/tween.js"></script>
 		<script type="text/javascript">      
 			//alert(window.devicePixelRatio);//dpr像素比
 		    (function (doc, win) {
@@ -388,7 +398,15 @@
 		    })(document, window);
 			
 			var top_nav = document.getElementById("top_nav");
+			var jie = document.getElementById("jie");
+			var tm = document.getElementById("tm");
+			var member = document.getElementById("member");
+			var nav_list = document.getElementById("nav_list");
+			var lis = nav_list.getElementsByTagName("li");
+			var triangle = document.getElementById("triangle");
 			var gotop = 0;
+			var time = null;
+			var time1 = null;
 //	当浏览器窗口发生滚动的时候触发事件
 			window.onscroll = function(){
 //	当浏览器窗口发生变话的时候不断获取滚动条距离顶部的位置
@@ -399,31 +417,65 @@
 					top_nav.style.display = "none";
 				}
 			}
-			var top_nav = document.getElementById("top_nav");
-			var nav_list = document.getElementById("nav_list");
-			var lis = nav_list.getElementsByTagName("li");
+//	改变li的颜色效果			
 			function clear(){
 				for(var i=0;i<lis.length;i++){
 					lis[i].className  = "";
 				}
 			}
 			for(var i=0;i<lis.length;i++){
+				lis[i].index = i;
 				lis[i].onclick = function(){
 					clear();
 					this.className = "special";
+					move1(this.index);
 				}
 			}
-			lis[0].onclick = function(){
-					
-				document.body.scrollTop = 243;
-			}
-			lis[1].onclick = function(){
-				document.body.scrollTop = 993;
-			}
-			lis[2].onclick = function(){
-				document.body.scrollTop = 1553;	
+//	创建小三角移动的函数
+			function move1(ind){
+				var t=0;
+				var maxT = 50;
+				var start = triangle.offsetLeft;
+				var end = lis[o].offsetWidth*ind;
+				var change = end-start;
+				time1 = setInterval(function(){
+					t++;
+					if(t>=maxT){
+						clearInterval(time1);
+					}
+					triangle.style.left = Tween.Linear(t,start,change,maxT)+'rem';
+				},10)
 			}
 			
+			
+			lis[0].onclick = function(){	
+				//document.body.scrollTop = 258;
+				move(jie.offsetTop-top_nav.offsetHeight);	
+			}
+			lis[1].onclick = function(){
+				//document.body.scrollTop = 1010;
+				move(tm.offsetTop-top_nav.offsetHeight);
+			}
+			lis[2].onclick = function(){
+				//document.body.scrollTop = 1580;
+				move(member.offsetTop-top_nav.offsetHeight);
+			}
+			function move(h){
+				var t=0;
+				var maxT = 50;
+				var start = document.body.scrollTop||document.documentElement.scrollTop;
+				var end = h;
+				change = end-start;
+				clearInterval(time);
+				time = setInterval(function(){
+					t++;
+					if(t>=maxT){
+						clearInterval(time);
+					}
+					document.body.scrollTop = Tween.Linear(t,start,change,maxT);
+					document.documentElement.scrollTop = Tween.Linear(t,start,change,maxT);
+				},10)
+			}
 			
 			
 			var mySwiper = new Swiper ('.swiper-container', {
