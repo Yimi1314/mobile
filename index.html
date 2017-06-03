@@ -226,7 +226,7 @@
 				border: 0.14rem solid transparent;
 				border-bottom-color:darkcyan;
 				position: absolute;
-				left: 1.1rem;
+				left: 14%;
 				bottom: 0;
 			}
 		</style>
@@ -416,6 +416,21 @@
 				}else{
 					top_nav.style.display = "none";
 				}
+				if(gotop<tm.offsetTop-top_nav.offsetHeight){
+					clear();
+					lis[0].className ="special";
+					triangle.style.left='14%';
+				}
+				if(gotop>=tm.offsetTop-top_nav.offsetHeight&&gotop<=member.offsetTop-top_nav.offsetHeight){
+					clear();
+					lis[1].className='special';
+					triangle.style.left='48%';
+				}
+				if(gotop>=member.offsetTop-top_nav.offsetHeight){
+					clear();
+					lis[2].className='special';
+					triangle.style.left='82%';
+				}
 			}
 //	改变li的颜色效果			
 			function clear(){
@@ -423,7 +438,7 @@
 					lis[i].className  = "";
 				}
 			}
-			for(var i=0;i<lis.length;i++){
+			/*for(var i=0;i<lis.length;i++){
 				lis[i].index = i;
 				lis[i].onclick = function(){
 					clear();
@@ -436,25 +451,28 @@
 				var t=0;
 				var maxT = 50;
 				var start = triangle.offsetLeft;
-				var end = lis[o].offsetWidth*ind;
+				var end = lis[0].offsetWidth*ind;
 				var change = end-start;
+				clearInterval(time1);
 				time1 = setInterval(function(){
 					t++;
 					if(t>=maxT){
 						clearInterval(time1);
 					}
-					triangle.style.left = Tween.Linear(t,start,change,maxT)+'rem';
+					triangle.style.left = Tween.Linear(t,start,change,maxT)+'px';
 				},10)
-			}
+			}*/
 			
-			
+			var h = document.documentElement.scrollTop||document.body.scrollTop;
 			lis[0].onclick = function(){	
 				//document.body.scrollTop = 258;
-				move(jie.offsetTop-top_nav.offsetHeight);	
+				move(jie.offsetTop-top_nav.offsetHeight);
+				
 			}
 			lis[1].onclick = function(){
 				//document.body.scrollTop = 1010;
 				move(tm.offsetTop-top_nav.offsetHeight);
+				
 			}
 			lis[2].onclick = function(){
 				//document.body.scrollTop = 1580;
